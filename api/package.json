@@ -10,10 +10,12 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/node": "^22.7.5",
     "@types/redis": "^4.0.11",
     "@types/uuid": "^10.0.0",
+    "cors": "^2.8.5",
     "express": "^4.21.1",
     "pg": "^8.13.1",
     "redis": "^4.7.0",
