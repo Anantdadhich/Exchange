@@ -1,23 +1,25 @@
-import express from "express"
-import  { createProxyMiddleware } from "http-proxy-middleware"
-
-const app=express()
-app.use(express.json())
+import { createClient } from "redis";
 
 
-const targetUrl="https://api.backpack.exchange";
 
-app.use("/",createProxyMiddleware({
-    target:targetUrl,
-    changeOrigin:true,
-    //@ts-ignore
-    onProxyReq:(proxyReq,req,res)=>{
 
-    },
-    //@ts-ignore
-     onProxyRes: (proxyRes, req, res) => {
-        // Optionally, you can modify the response here
+
+async function mai(){
+ const engine=new Engine();
+ const redisclient=createClient();
+ await redisclient.connect();
+
+console.log("redis connected ");
+
+ while(true ){
+   const response=await redisclient.rPop("messages " as string)
+    if(!response){
+
+    } else {
+        
     }
-}))
 
-app.listen(3000);
+}
+
+
+}
