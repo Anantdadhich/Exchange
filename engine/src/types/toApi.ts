@@ -1,3 +1,5 @@
+import { Order } from "../trade/order";
+
 export const CREATE_ORDER="CREATE_ORDER";
 export const CANCEL_ORDER="CANCEL_ORDER";
 export const ONRAMP="ON_RAMP";
@@ -17,14 +19,14 @@ export type MessagetoApi={
     type:"ORDER_PLACED",
     payload:{
         orderId:string,
-        executedqty:number,
-        fills:[
+        executedQty:number,
+        fills:
             {
                 price:string,
                 qty:number,
                 tradeId:number
             }[]
-        ]
+        
     }
 } | {
     type:"ORDER_CANCELLED",

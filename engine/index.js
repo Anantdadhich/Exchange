@@ -19,4 +19,8 @@ app.use("/", (0, http_proxy_middleware_1.createProxyMiddleware)({
         // Optionally, you can modify the response here
     }
 }));
-app.listen(3000);
+const port=3000;
+
+app.listen(port,()=>{
+    console.log(`the http://localhost:${port}`)
+})

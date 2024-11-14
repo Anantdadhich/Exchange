@@ -1,20 +1,26 @@
 import { createClient, RedisClientType } from "redis";
+import { WsMessage } from "./types/toWs";
+import { MessagetoApi } from "./types/toApi";
 
 export const TRADED_ADDED="TRADE_ADDED";
 export const ORDER_UPDATE="ORDER_UPDATE";
 
 
 type DbMessage ={
+    //as we see bro we use union types 
+    //wehener the order added
     type:typeof  TRADED_ADDED,
     data:{
         id:string,
         isBuyerMaker:boolean,
         price:string,
         quantity:string,
-        timestamp:string,
-        QouteQunatity:string 
+        timestamp:number,
+        qouteQunatity:string,
+        market:string 
     }
 } | {
+    //whenver the order update 
     type:typeof ORDER_UPDATE,
     data:{
         orderId:string,
@@ -30,6 +36,7 @@ type DbMessage ={
 
 export class RedisManager {
 private client:RedisClientType;
+// this ensures that we follow the sing patter
 private static instance:RedisManager
 
 
@@ -46,4 +53,18 @@ public static getInstance(){
 }
 
 
+
+//now we creat the where dbmessage push into a redis list 
+  public Pushmessage(message:DbMessage){
+    //lpush adds the message in the begenning
+    this.client.lPush("db_processor",JSON.stringify(message))
+  }
+
+  public publishmessage(channel:string,message:WsMessage){
+    this.client.publish(channel,JSON.stringify(message))
+  }
+  
+  public sendToApi(clientId:string,message:MessagetoApi){
+       this.client.publish(clientId,JSON.stringify(message))
+  }
 }

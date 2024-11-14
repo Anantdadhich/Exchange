@@ -19,13 +19,13 @@ export type MessageFromApi ={
     type:typeof CANCEL_ORDER,
     data:{
         market:string,
-        userId:string
+        orderId:string
     }
  } | {
     type:typeof ON_RAMP, 
     data:{
         amount:string,
-        userIdd:string,
+        userId:string,
         txnId:string
     }
  } | {

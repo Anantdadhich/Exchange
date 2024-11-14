@@ -13,7 +13,7 @@ export type TickerUpdateMessage ={
 }
 
 export type DepthupdateMessage ={
-    stream:number,
+    stream:string,
     data:{
         b?:[string,string][],
         a?:[string,string][],
@@ -22,7 +22,7 @@ export type DepthupdateMessage ={
 }
 
 export type TradeAddedMessage ={
-    stream:number,
+    stream:string,
     data:{
         e:"trade",
         t:number,

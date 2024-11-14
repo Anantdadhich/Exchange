@@ -1,10 +1,11 @@
 import { createClient } from "redis";
+import { Engine } from "./trade/engine";
 
 
 
 
 
-async function mai(){
+async function main(){
  const engine=new Engine();
  const redisclient=createClient();
  await redisclient.connect();
@@ -16,10 +17,11 @@ console.log("redis connected ");
     if(!response){
 
     } else {
-        
+        engine.process(JSON.parse(response))
     }
 
 }
 
 
 }
+main()
