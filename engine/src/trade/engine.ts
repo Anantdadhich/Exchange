@@ -470,5 +470,26 @@ export class Engine {
         }
     });
    }
+ 
 
+   checkandLockedfunds(baseAsset:string,qouteasset:string,price:string,side:"buy"|"sell",userId:string,asset:string,quantity:string){
+        if(side ==="buy"){
+          if((this.balances.get(userId)?.[qouteasset]?.available || 0) < Number(quantity) *Number(price)){
+            throw new Error("insuff blanc")
+          }  
+     //@ts-ignore
+          this.balances.get(userId)[qouteasset].available=this.balances.get(userId)?.[qouteasset].available - (Number(quantity) * Number(price))
+       //@ts-ignore
+          this.balances.get(userId)[qouteasset].locked=this.balances.get(userId)?.[qouteasset].locked  + (Number(quantity) * Number(price))
+        }
+
+    else{
+        if((this.balances.get(userId)?.[baseAsset]?.available || 0) < Number(quantity))
+{   
+    //@ts-ignore
+     this.balances.get(userId)[baseAsset].available=this.balances.get(userId)?.[baseAsset].available -Number(quantity);
+      //@ts-ignore
+      this.balances.get(userId)[baseAsset].locked =this.balances.get(userId)?.[baseAsset].locked +Number(quantity)
+}    }
+   }
 }
