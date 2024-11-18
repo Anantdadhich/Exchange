@@ -6,7 +6,7 @@ const BASE_URL="http://localhost:3000";
 
 const TOTALBIDS=15
 const TOTALAKS=15
-const MARKET="SOL_USDC"
+const MARKET="TATA_INR"
 const USERID=5
 
 

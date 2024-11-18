@@ -6,7 +6,7 @@ import { CANCEL_ORDER, CREATE_ORDER, GET_OPEN_ORDERS } from "../types";
 export const orderbookrouter=Router();
 
 
-orderbookrouter.post("/create",async(req,res)=>{
+orderbookrouter.post("/",async(req,res)=>{
      const {market,price,quantity,side,userId}=req.body;
 
      console.log({market,price,quantity,side,userId})

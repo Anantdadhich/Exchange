@@ -3,9 +3,7 @@ import { Fill, Order, OrderBook } from "./order"
 import { MessageFromApi } from "../types/fromApi"
 import { ORDER_UPDATE, RedisManager, TRADED_ADDED } from "../redismanager"
 
-
-
-export const BASE_CURRENCY="USDC"
+export const BASE_CURRENCY="INR"
 
 
 interface UserBalance {
@@ -27,7 +25,7 @@ export class Engine {
         // When a new client connects to the exchange, they typically receive a full snapshot of the current order book. This allows them to have an accurate starting point.
      let snapshot=null; ///we will update the exchange 
      try {
-        if(process.env.WITHSNAPSHOT) {
+        if(process.env.WITH_SNAPSHOT) {
             snapshot=fs.readFileSync("./snapshot.json");
 
         }
@@ -423,7 +421,7 @@ export class Engine {
             available:1000,
             locked:0
         },
-        "SOL":{
+        "TATA":{
             available:1000,
             locked:0
         }
@@ -434,7 +432,7 @@ export class Engine {
             available:1000,
             locked:0
         },
-        "SOL":{
+        "TATA":{
             available:1000,
             locked:0
         }
@@ -444,7 +442,7 @@ export class Engine {
             available:1000,
             locked:0
         },
-        "SOL":{
+        "TATA":{
             available:1000,
             locked:0
         }
@@ -454,7 +452,7 @@ export class Engine {
             available:1000,
             locked:0
         },
-        "SOL":{
+        "TATA":{
             available:1000,
             locked:0
         }
@@ -464,7 +462,7 @@ export class Engine {
             available:1000,
             locked:0
         },
-        "SOL":{
+        "TATA":{
             available:1000,
             locked:0
         }
